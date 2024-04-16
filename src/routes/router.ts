@@ -1,16 +1,16 @@
 import express from "express";
-import { getAllItem, getSingleItem } from "../handler/get-handler";
-import createItem from "../handler/create-handler";
-import updateItem from "../handler/update-handler";
-import deleteItem from "../handler/delete-handler";
-import { getAnalytics } from "../handler/get-analytics-handler";
+import handleLogin from "../handler/login-handler";
+import createUser from "../handler/create-user-handler";
+import updateUser from "../handler/update-user-handler";
+import deleteUser from "../handler/delete-user-handler";
+import getUser from "../handler/get-user-handler";
 
-const genericRouter = express.Router();
+const loginRouter = express.Router();
 
-genericRouter.get("/get/:item/", getAllItem());
-genericRouter.get("/get/:item/:itemId", getAllItem());
-genericRouter.post("/create/:item", createItem());
-genericRouter.patch("/update/:item/:itemId", updateItem());
-genericRouter.delete("/delete/:item/:itemId", deleteItem());
-genericRouter.get("/analytics", getAnalytics());
-export default genericRouter;
+loginRouter.post("/login", handleLogin());
+loginRouter.post("/create", createUser());
+loginRouter.patch("/update/:id", updateUser());
+loginRouter.delete("/delete/:id", deleteUser());
+loginRouter.get("/all", getUser());
+
+export default loginRouter;

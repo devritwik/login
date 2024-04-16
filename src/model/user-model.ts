@@ -7,6 +7,9 @@ const userSchema = new Schema(
     username: { type: String, required: true, unique: true },
     firstname: { type: String, required: false },
     lastname: { type: String, required: false },
+    password: { type: String, require: true },
+    isActive: { type: Boolean, require: true, default: true },
+    role: { type: String, require: true, default: "user" },
   },
   { timestamps: true }
 );

@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import genericRouter from "./routes/router";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
+import loginRouter from "./routes/router";
 
 const app = express();
 dotenv.config();
@@ -15,8 +15,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-//all routes add below
-app.use(genericRouter);
+app.use("/user", loginRouter);
 
 app.get("/health", (req, res) => {
   res.end("I am alive");
